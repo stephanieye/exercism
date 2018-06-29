@@ -1,15 +1,24 @@
+// not fully passing: error throws [object Object]
+
+var ArgumentError = function(){};
+
 var WordProblem = function(input){
 
-  this.raw = input.slice(8, input.length-1).split(' ');
-  if (this.raw.length <5) {
-    this.question = this.raw;
+  if (!/\d/.test(input)
+   ||  (!input.includes('plus') && !input.includes('minus') && !input.includes('multiplied') && !input.includes('divided'))) {
+    throw new ArgumentError();
   } else {
-    if (/\D/.test(this.raw[this.raw.length-3])) {
-      this.extra = this.raw.slice(this.raw.length-3, this.raw.length);
-    }else {
-      this.extra = this.raw.slice(this.raw.length-2, this.raw.length);
+    this.raw = input.slice(8, input.length-1).split(' ');
+    if (this.raw.length <5) {
+      this.question = this.raw;
+    } else {
+      if (/\D/.test(this.raw[this.raw.length-3])) {
+        this.extra = this.raw.slice(this.raw.length-3, this.raw.length);
+      } else {
+        this.extra = this.raw.slice(this.raw.length-2, this.raw.length);
+      }
+      this.question = this.raw.slice(0, this.raw.length-this.extra.length);
     }
-    this.question = this.raw.slice(0, this.raw.length-this.extra.length);
   }
 };
 
@@ -50,8 +59,7 @@ WordProblem.prototype.answer = function(){
   return this.result;
 };
 
-
-
 module.exports = {
-  WordProblem: WordProblem
+  WordProblem: WordProblem,
+  ArgumentError: ArgumentError
 };
