@@ -23,6 +23,26 @@ List.prototype.concat = function(newList) {
   return new List(concat);
 };
 
+List.prototype.filter = function(func) {
+  var values = this.values;
+  for (var i = 0; i < values.length; i++) {
+    if (!func(values[i])) {
+      values.splice(i, 1);
+    }
+  }
+  return new List(values);
+};
+
+List.prototype.length = function() {
+  var length = 0;
+  for (var i = 0; i < this.values.length; i ++) {
+    length += 1;
+  }
+  return length;
+};
+
+
+
 
 
 module.exports = List;

@@ -53,24 +53,24 @@ describe('List', function () {
   });
 
   describe('filter', function () {
-    xit('filters an empty list by a function', function () {
+    it('filters an empty list by a function', function () {
       var list = new List();
       expect(list.filter(isOdd).values).toEqual([]);
     });
 
-    xit('filters a non-empty list by a function', function () {
+    it('filters a non-empty list by a function', function () {
       var list = new List([1, 2, 3, 5]);
       expect(list.filter(isOdd).values).toEqual([1, 3, 5]);
     });
   });
 
   describe('length', function () {
-    xit('finds the length of a empty list', function () {
+    it('finds the length of a empty list', function () {
       var list = new List();
       expect(list.length()).toEqual(0);
     });
 
-    xit('finds the length of a non-empty list', function () {
+    it('finds the length of a non-empty list', function () {
       var list = new List([1, 2, 3, 4]);
       expect(list.length()).toEqual(4);
     });
