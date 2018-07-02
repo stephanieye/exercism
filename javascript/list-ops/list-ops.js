@@ -1,3 +1,8 @@
+//unable to pass the spying specs, get
+// Error: <toHaveBeenCalled> : Expected a spy, but got Function.
+// Usage: expect(<spyObj>).toHaveBeenCalled()
+
+
 var List = function(input){
   this.values = input || [];
 };
@@ -41,8 +46,42 @@ List.prototype.length = function() {
   return length;
 };
 
+List.prototype.map = function(func) {
+  var values = this.values;
+  var newvalues = [];
+  for (var i = 0; i < values.length; i++) {
+    var mapped = func(values[i]);
+    newvalues.push(mapped);
+  }
+  this.values = newvalues;
+  return new List(newvalues);
+};
 
+List.prototype.foldl = function(func, input) {
+  var acc = input;
+  for (var i = 0; i < this.values.length; i++) {
+    acc = func(this.values[i], acc);
+  }
+  return acc;
+};
 
+List.prototype.foldr = function(func, input) {
+  var acc = input;
+  for (var i = this.values.length-1; i > -1; i--) {
+    acc = func(this.values[i], acc);
+  }
+  return acc;
+};
+
+List.prototype.reverse = function() {
+  var values = this.values;
+  var newvalues = [];
+  for (var i = 0; i < values.length; i++) {
+    newvalues.unshift(values[i]);
+  }
+  this.values = newvalues;
+  return new List(newvalues);
+};
 
 
 module.exports = List;

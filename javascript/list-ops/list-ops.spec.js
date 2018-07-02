@@ -77,48 +77,48 @@ describe('List', function () {
   });
 
   describe('map', function () {
-    xit('maps a function over an empty list', function () {
+    it('maps a function over an empty list', function () {
       var list = new List([]);
       expect(list.map(plusOne).values).toEqual([]);
     });
 
-    xit('maps a function over a non-empty list', function () {
+    it('maps a function over a non-empty list', function () {
       var list = new List([1, 3, 5, 7]);
       expect(list.map(plusOne).values).toEqual([2, 4, 6, 8]);
     });
   });
 
   describe('foldl', function () {
-    xit('folds an empty list from the left with the given function', function () {
+    it('folds an empty list from the left with the given function', function () {
       var list = new List([]);
       expect(list.foldl(divide, 2)).toEqual(2);
     });
 
-    xit('folds a non-empty list from the left with the given function', function () {
+    it('folds a non-empty list from the left with the given function', function () {
       var list = new List([1, 2, 3, 4]);
       expect(list.foldl(divide, 24)).toEqual(64);
     });
   });
 
   describe('foldr', function () {
-    xit('folds an empty list from the right with the given function', function () {
+    it('folds an empty list from the right with the given function', function () {
       var list = new List([]);
       expect(list.foldr(divide, 2)).toEqual(2);
     });
 
-    xit('folds a non-empty list from the right with the given function', function () {
+    it('folds a non-empty list from the right with the given function', function () {
       var list = new List([1, 2, 3, 4]);
       expect(list.foldr(divide, 24)).toEqual(9);
     });
   });
 
   describe('reverse', function () {
-    xit('reverses an empty list', function () {
+    it('reverses an empty list', function () {
       var list = new List([]);
       expect(list.reverse().values).toEqual([]);
     });
 
-    xit('reverses a non-empty list', function () {
+    it('reverses a non-empty list', function () {
       var list = new List([1, 3, 5, 7]);
       expect(list.reverse().values).toEqual([7, 5, 3, 1]);
     });
@@ -146,22 +146,22 @@ describe('List', function () {
       list.foldr(divide, 24);
     });
 
-    xit('Array.prototype.map()', function () {
+    it('Array.prototype.map()', function () {
       expect(list.values.map).not.toHaveBeenCalled();
     });
-    xit('Array.prototype.filter()', function () {
+    it('Array.prototype.filter()', function () {
       expect(list.values.filter).not.toHaveBeenCalled();
     });
-    xit('Array.prototype.reduce()', function () {
+    it('Array.prototype.reduce()', function () {
       expect(list.values.reduce).not.toHaveBeenCalled();
     });
-    xit('Array.prototype.reduceRight()', function () {
+    it('Array.prototype.reduceRight()', function () {
       expect(list.values.reduceRight).not.toHaveBeenCalled();
     });
-    xit('Array.prototype.concat()', function () {
+    it('Array.prototype.concat()', function () {
       expect(list.values.concat).not.toHaveBeenCalled();
     });
-    xit('Array.prototype.reverse()', function () {
+    it('Array.prototype.reverse()', function () {
       expect(list.values.reverse).not.toHaveBeenCalled();
     });
   });
